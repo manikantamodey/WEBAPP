@@ -1,9 +1,7 @@
 pipeline{
     //Directives
     agent any
-    tools {
-        maven 'maven'
-    }
+   
 
     stages {
         // Specify various stage with in stages
