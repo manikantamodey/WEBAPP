@@ -18,7 +18,7 @@ pipeline{
         // Stage2 : Testing
         stage ('Test'){
             steps {
-                echo ' testing......'
+                echo ' Testing done......'
 
             }
         }
@@ -26,7 +26,7 @@ pipeline{
         // Stage3 : Deploy
         stage ('Deploy'){
             steps {
-                echo ' Deploying.............'
+                echo ' Deploying is process.............'
                 
                 }
 
