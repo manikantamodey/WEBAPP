@@ -54,17 +54,16 @@ pipeline{
                 
                 }
 
-            }
-        }
+        }      
+
 
         // Stage5 : Deploy
         stage ('Deploy'){
             steps {
                 echo ' Deploying is process.............'
                 
-                }
-
             }
-        }
 
+        }
+    }
 }
