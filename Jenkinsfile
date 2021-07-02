@@ -26,7 +26,14 @@ pipeline{
         //Stage3 : Publish to Repository
         stage ('Publish to Repository') {
             steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'myDevopslab', classifier: '', file: 'target/myDevopslab-0.0.2-Snapshot.war', type: 'war']], credentialsId: '1531c45c-f79d-4e60-b219-2c529930adfe', groupId: 'com.myDevopslab', nexusUrl: '172.16.10.242:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'myDevopslab-Snapshot', version: '0.0.2-Snapshot'
+                nexusArtifactUploader artifacts: [[artifactId: 'MyDevOpsLab', classifier: '', file: 'target\\MyDevOpsLab-0.0.2-SNAPSHOT.war', type: 'war']], 
+                credentialsId: '5b1376b9-b0a7-484a-9063-329a6d1d4e6b', 
+                groupId: 'com.MyDevOpsLab', 
+                nexusUrl: '172.16.10.28:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'MyDevOpsLab-SNAPSHOT', 
+                version: '0.0.2-SNAPSHOT'
             }
         }
 
