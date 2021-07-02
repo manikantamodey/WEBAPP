@@ -16,7 +16,7 @@ pipeline{
     stages {
         // Specify various stage with in stages
 
-        // stage 1. Build
+        // stage 1: Build
         stage ('Build'){
             steps {
                 sh 'mvn clean install package'
@@ -67,7 +67,4 @@ pipeline{
             }
         }
 
-        
-        
-
-
+}
