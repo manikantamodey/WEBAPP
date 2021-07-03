@@ -37,17 +37,15 @@ pipeline{
             }
         }
 
-        // Stage3 : Deploy
+        // Stage4 : Deploy
         stage ('Deploy'){
             steps {
                 echo 'This is a Fresh start'
-                }
-
             }
-        }
 
-        
-        
+        }
     }
 
+        
+        
 }
