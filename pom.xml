@@ -4,7 +4,7 @@
   <groupId>com.MyDevOpsLab</groupId>
   <artifactId>MyDevOpsLab</artifactId>
   <packaging>war</packaging>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <name>MyDevOpsLab</name>
   <url>http://maven.apache.org</url>
   <dependencies>
