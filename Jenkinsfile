@@ -2,7 +2,7 @@ pipeline{
     //Directives
     agent any
     tools {
-        maven 'maven'
+        maven 'Maven'
     }
 
     stages {
@@ -23,12 +23,24 @@ pipeline{
             }
         }
 
-        // Stage3 : Publish the source code to Sonarqube
-        stage ('Sonarqube Analysis'){
+        //Stage3 : Publish to Repository
+        stage ('Publish to Repository') {
             steps {
-                echo ' Source code published to Sonarqube for SCA......'
-                withSonarQubeEnv('sonarqube'){ // You can override the credential to be used
-                     sh 'mvn sonar:sonar'
+                nexusArtifactUploader artifacts: [[artifactId: 'MyDevOpsLab', classifier: '', file: 'target\\MyDevOpsLab-0.0.2-SNAPSHOT.war', type: 'war']], 
+                credentialsId: '6bca8a65-3bf8-4979-9e7d-fb2b45c36db4', 
+                groupId: 'com.MyDevOpsLab', 
+                nexusUrl: '172.16.10.168:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'MyDevOpsLab-SNAPSHOT', 
+                version: '0.0.2-SNAPSHOT'
+            }
+        }
+
+        // Stage3 : Deploy
+        stage ('Deploy'){
+            steps {
+                echo 'This is a Fresh start'
                 }
 
             }
