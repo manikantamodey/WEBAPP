@@ -5,6 +5,12 @@ pipeline{
         maven 'Maven'
     }
 
+    environment {
+        GroupId = readMavenPom().getGroupId()
+        ArtifactId = readMavenPom().getArtifactId()
+        Version = readMavenPom().getVersion()
+    }
+
     stages {
         // Specify various stage with in stages
 
@@ -26,14 +32,19 @@ pipeline{
         //Stage3 : Publish to Repository
         stage ('Publish to Repository') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'MyDevOpsLab', classifier: '', file: 'target\\MyDevOpsLab-0.0.2-SNAPSHOT.war', type: 'war']], 
-                credentialsId: '6bca8a65-3bf8-4979-9e7d-fb2b45c36db4', 
-                groupId: 'com.MyDevOpsLab', 
-                nexusUrl: '172.16.10.168:8081', 
-                nexusVersion: 'nexus3', 
-                protocol: 'http', 
-                repository: 'MyDevOpsLab-SNAPSHOT', 
-                version: '0.0.2-SNAPSHOT'
+                scripts {
+                    nexusArtifactUploader artifacts: [[artifactId: 'MyDevOpsLab', classifier: '', file: "target\\${ArtifactId}-${Version}.war", type: 'war']], 
+                    credentialsId: '6bca8a65-3bf8-4979-9e7d-fb2b45c36db4', 
+                    groupId: "${GroupId}", 
+                    nexusUrl: '172.16.10.168:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'MyDevOpsLab-SNAPSHOT', 
+                    version: "${Version}"
+
+
+                }
+                
             }
         }
 
