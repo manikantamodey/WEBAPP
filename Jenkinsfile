@@ -32,7 +32,7 @@ pipeline{
         //Stage3 : Publish to Repository
         stage ('Publish to Repository') {
             steps {
-                scripts {
+                script {
                     nexusArtifactUploader artifacts: [[artifactId: 'MyDevOpsLab', classifier: '', file: "target\\${ArtifactId}-${Version}.war", type: 'war']], 
                     credentialsId: '6bca8a65-3bf8-4979-9e7d-fb2b45c36db4', 
                     groupId: "${GroupId}", 
