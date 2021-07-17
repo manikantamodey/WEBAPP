@@ -24,7 +24,7 @@ pipeline{
         // Stage2 : Testing
         stage ('Test'){
             steps {
-                echo ' testing......'
+                echo ' Testing***********.'
 
             }
         }
