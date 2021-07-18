@@ -53,6 +53,28 @@ pipeline{
         stage ('Deploy'){
             steps {
                 echo 'This is a Fresh start'
+                sshPublisher(publishers: 
+                [sshPublisherDesc(
+                    configName: 'Ansible_controller', 
+                    transfers:[
+                        sshTransfer(
+                            cleanRemote: false, 
+                            excludes: '', 
+                            execCommand: 'ansible-playbook /opt/playbooks/downloadanddeploy.yml -i /opt/playbooks/hosts', 
+                            execTimeout: 120000, 
+                            flatten: false, 
+                            makeEmptyDirs: false, 
+                            noDefaultExcludes: false, 
+                            patternSeparator: '[, ]+', 
+                            remoteDirectory: '', 
+                            remoteDirectorySDF: false, 
+                            removePrefix: '', 
+                            sourceFiles: ''
+                            )
+                            ], 
+                    usePromotionTimestamp: false, 
+                    useWorkspaceInPromotion: false, 
+                    verbose: false)])
             }
 
         }
